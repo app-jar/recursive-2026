@@ -20,3 +20,6 @@ simple_path(A, B, K, Edges, [A|Rest]) :-
     neighbor(A, Next, Edges),
     K1 is K - 1,
     simple_path(Next, B, K1, Edges, Rest).
+
+has_simple_path(_Vertices, Edges, A, B, K) :-
+    simple_path(A, B, K, Edges, _).

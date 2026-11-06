@@ -15,12 +15,22 @@ neighbor(V, N, Edges) :- member((N, V), Edges). /* Обратное соседс
 
 /*Поиск пути*/
 simple_path(A, B, 0, _, [A]) :- A =:= B.
-simple_path(A, B, K, Edges, [A|Rest]) :-
+simple_path(A, B, K, Edges, [A|Path]) :-
     K > 0,
     neighbor(A, Next, Edges),
-     \+ member(Next, Rest), /**/
+     \+ member(Next, ), /**/
     K1 is K - 1,
-    simple_path(Next, B, K1, Edges, Rest).
+    simple_path(Next, B, K1, Edges, Path).
 
 has_simple_path(_Vertices, Edges, A, B, K) :-
     simple_path(A, B, K, Edges, _).
+
+/*
+Тестовые примеры:
+
+1. Есть путь
+has_simple_path([a,b,c,d], [(a,b),(b,d),(a,c),(c,d)], a, d, 2).
+
+2. Нет пути
+has_simple_path([a,b,c,d], [(a,b),(b,c)], a, d, 2).
+*/

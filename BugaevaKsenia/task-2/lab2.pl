@@ -12,3 +12,11 @@
 
 neighbor(V, N, Edges) :- member((V, N), Edges). /* Проверка прямого соседства*/
 neighbor(V, N, Edges) :- member((N, V), Edges). /* Обратное соседство (неориентированный граф)*/
+
+/*Поиск пути*/
+simple_path(A, B, 0, _, [A]) :- A =:= B.
+simple_path(A, B, K, Edges, [A|Rest]) :-
+    K > 0,
+    neighbor(A, Next, Edges),
+    K1 is K - 1,
+    simple_path(Next, B, K1, Edges, Rest).

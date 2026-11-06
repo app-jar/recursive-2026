@@ -20,4 +20,16 @@ is_repeated_n_times(List, N) :-
     BaseLen is Len // N,        % Вычисляем длину повторяющегося кусочка
     length(Base, BaseLen),      % Создаем список Base нужной длины
     append(Base, _, List),
-    repeat_list(Base, Len, List). % Проверяем, что повторение Base N раз дает исходный List
+    repeat_list(Base, N, List). % Проверяем, что повторение Base N раз дает исходный List
+
+    /*тестовые примеры:
+     is_repeated_n_times([1, 2, 3, 1, 2, 3, 1, 2, 3], 3).
+     ответ: true
+     is_repeated_n_times([1],1).
+     ответ: true
+     is_repeated_n_times([1, 2, 3, 1, 2, 3, 1, 2, 4], 3).
+     ответ: false
+     is_repeated_n_times([apple, orange, banana], 1).
+     ответ: true.
+     is_repeated_n_times([a, b, c, d], 4).
+     ответ: false.

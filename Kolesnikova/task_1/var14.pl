@@ -12,7 +12,7 @@ count_occurrences(X, [X|T], Count) :-
     !, 
     count_occurrences(X, T, RestCount), 
     Count is RestCount + 1.
-count_occurrences(X, [Y|T], Count) :- 
+count_occurrences(X, [_|T], Count) :- 
     count_occurrences(X, T, Count).
 
 /* 

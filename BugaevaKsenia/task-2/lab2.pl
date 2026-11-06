@@ -18,6 +18,7 @@ simple_path(A, B, 0, _, [A]) :- A =:= B.
 simple_path(A, B, K, Edges, [A|Rest]) :-
     K > 0,
     neighbor(A, Next, Edges),
+     \+ member(Next, Rest), /**/
     K1 is K - 1,
     simple_path(Next, B, K1, Edges, Rest).
 

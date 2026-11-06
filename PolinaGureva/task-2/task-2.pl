@@ -15,3 +15,6 @@ transpose(Matrix, [Head_Col | Tail_Col]) :-
 extract_first_elements([], [], []).
 extract_first_elements([[H|T]|Rows], [H|Heads], [T|Tails]) :-
     extract_first_elements(Rows, Heads, Tails).
+
+% Базовый случай, чтобы не уходить в бесконечную рекурсию
+transpose([], []).

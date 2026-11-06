@@ -32,4 +32,13 @@ is_repeated_n_times(List, N) :-
      is_repeated_n_times([apple, orange, banana], 1).
      ответ: true.
      is_repeated_n_times([a, b, c, d], 4).
-     ответ: false.
+     ответ: false. 
+     is_repeated_n_times([1,1,1,1], 2)
+    ответ: true.
+    is_repeated_n_times([], 3)
+    ответ: false. 
+    is_repeated_n_times([1,2], 3)
+    ответ: false. 
+    is_repeated_n_times([a, b, a, b], 2). - true.
+    is_repeated_n_times([a, a, a], 3) - true.
+*/

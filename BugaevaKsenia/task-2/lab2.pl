@@ -11,3 +11,4 @@
 */
 
 neighbor(V, N, Edges) :- member((V, N), Edges). /* Проверка прямого соседства*/
+neighbor(V, N, Edges) :- member((N, V), Edges). /* Обратное соседство (неориентированный граф)*/

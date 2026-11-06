@@ -10,3 +10,14 @@ repeat_list(List, N, Result) :-
     N1 is N - 1,
     repeat_list(List, N1, Tail),
     append(List, Tail, Result).
+
+% Основной предикат проверки
+is_repeated_n_times(List, N) :-
+    N > 0,                      % N должно быть положительным
+    length(List, Len),         
+    Len > 0,                    % Список не должен быть пустым
+    Len mod N =:= 0,            % Длина должна делиться на N без остатка
+    BaseLen is Len // N,        % Вычисляем длину повторяющегося кусочка
+    length(Base, BaseLen),      % Создаем список Base нужной длины
+    append(Base, _, List),
+    repeat_list(Base, Len, List). % Проверяем, что повторение Base N раз дает исходный List

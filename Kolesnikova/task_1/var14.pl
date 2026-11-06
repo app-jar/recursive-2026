@@ -59,3 +59,12 @@ min_count([_-F|T], MinFreq) :-
 Вывод: MinFreq = 1.
 Это верно!
 */
+
+% Главный предикат 
+% (получаем список уникальных, для каждого числа из списка уникальных считаем кол-во вхождений в исх. списке, 
+% находим мин. кол-во вхождений, собираем все числа, у которых кол-во вхождений равно минимальному)
+rarely_occurring(List, Result) :-
+    remove_duplicates(List, UniqueList),
+    create_pairs(UniqueList, List, Pairs),
+    min_count(Pairs, MinFreq),
+    findall(Num, member(Num-MinFreq, Pairs), Result).

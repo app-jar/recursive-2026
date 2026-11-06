@@ -67,4 +67,9 @@ rarely_occurring(List, Result) :-
     create_pairs(UniqueList, List, Pairs),
     min_count(Pairs, MinFreq),
     findall(Num, member(Num-MinFreq, Pairs), Result).
-
+    
+/*
+Пример (из задачи): ?- rarely_occurring([2, 5, 2, 3, 5, 2, 4], Result).
+Результат: Result = [3, 4].
+Вывод верный
+*/

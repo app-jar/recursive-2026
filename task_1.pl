@@ -7,3 +7,7 @@ count_occurrences(X, [H|T], N) :- X \= H, count_occurrences(X, T, N).
 unique_elements([], []).
 unique_elements([H|T], [H|Res]) :- \+ member(H, T), unique_elements(T, Res).
 unique_elements([H|T], Res) :- member(H, T), unique_elements(T, Res).
+
+exactly_two(List, Result) :-
+    unique_elements(List, Uniques),
+    findall(X, (member(X, Uniques), count_occurrences(X, List, 2)), Result).

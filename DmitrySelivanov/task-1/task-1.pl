@@ -5,18 +5,20 @@
 % Пример: [10, 20, 30, 40, 50]. 
 % Результат: [10, 30, 50].
 
-odd_positions([], []).
-
-odd_positions([H|T], [H|Res]) :-
-    odd_positions(T, Res, even).
-
+% Основной предикат
+% Запуск вспомогательного предиката с флагом 'odd',
+% тк первый элемент находится на нечётной позиции
 odd_positions(List, Result) :-
     odd_positions(List, Result, odd).
 
+% Вспомогательный предикат
+% Аргументы: (Исходный список, Результат, Текущая позиция)
 odd_positions([], [], _).
 
+% Случай 1: текущая позиция нечётная (odd)
 odd_positions([H|T], [H|Res], odd) :-
     odd_positions(T, Res, even).
 
+% Случай 2: текущая позиция чётная (even)
 odd_positions([_|T], Res, even) :-
     odd_positions(T, Res, odd).

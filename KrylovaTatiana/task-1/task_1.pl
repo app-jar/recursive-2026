@@ -3,3 +3,7 @@
 %Вход: список элементов.
 %Пример: [1, 3, 2, 4, 1, 5, 2].
 %Результат: [1, 2].
+
+count_occurrences(_, [], 0).
+count_occurrences(X, [X|T], N) :- count_occurrences(X, T, N1), N is N1 + 1.
+count_occurrences(X, [H|T], N) :- X \= H, count_occurrences(X, T, N).

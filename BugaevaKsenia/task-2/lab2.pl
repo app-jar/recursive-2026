@@ -14,13 +14,18 @@ neighbor(V, N, Edges) :- member((V, N), Edges). /* Проверка прямог
 neighbor(V, N, Edges) :- member((N, V), Edges). /* Обратное соседство (неориентированный граф)*/
 
 /*Поиск пути*/
-simple_path(A, B, 0, _, [A]) :- A =:= B.
-simple_path(A, B, K, Edges, [A|Path]) :-
+/*начальный путь одна вершина*/
+simple_path(A, B, K, Edges, FinalPath) :-
+    simple_path(A, B, K, Edges, [A], FinalPath).
+
+simple_path(B, B, 0, _, Path, Path). /*k=0 => мы в точке B*/
+/* Рекурсивный шаг*/
+simple_path(A, B, K, Edges, Path, FinalPath) :-
     K > 0,
     neighbor(A, Next, Edges),
-     \+ member(Next, ), /**/
+     \+ member(Next, Path ), 
     K1 is K - 1,
-    simple_path(Next, B, K1, Edges, Path).
+    simple_path(Next, B, K1, Edges, [Next|Path], FinalPath).
 
 has_simple_path(_Vertices, Edges, A, B, K) :-
     simple_path(A, B, K, Edges, _).

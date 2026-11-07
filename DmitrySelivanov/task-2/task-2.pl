@@ -6,18 +6,27 @@
 % Результат: 8.
 
 % Основной предикат
+tree_max(nil, nil).
+
+% Находим максимумы в ветках и сравниваем их со значением текущего узла
 tree_max(node(Value, Left, Right), Max) :-
-    max_in_branch(Left, MaxL),
-    max_in_branch(Right, MaxR),
-    max_list([Value, MaxL, MaxR], Max).
+    tree_max(Left, MaxL),
+    tree_max(Right, MaxR),
+    max_of_three(Value, MaxL, MaxR, Max).
 
-% Вспомогательный предикат для безопасного получения максимума из ветки
-max_in_branch(nil, 0) :- !. 
-max_in_branch(Node, Max) :-
-    tree_max(Node, Max).
+% Вспомогательный предикат
+% Обе ветки пустые
+max_of_three(Value, nil, nil, Value).
 
-% Вспомогательный предикат для поиска максимума в списке
-max_list([X], X) :- !.
-max_list([H|T], Max) :-
-    max_list(T, MaxTail),
-    Max is max(H, MaxTail).
+% Левая ветка пустая
+max_of_three(Value, nil, MaxR, Max) :-
+    Max is max(Value, MaxR).
+
+% Правая ветка пустая
+max_of_three(Value, MaxL, nil, Max) :-
+    Max is max(Value, MaxL).
+
+% Обе ветки непустые
+max_of_three(Value, MaxL, MaxR, Max) :-
+    Temp is max(Value, MaxL),
+    Max is max(Temp, MaxR).

@@ -19,7 +19,6 @@ is_repeated_n_times(List, N) :-
     Len mod N =:= 0,            % Длина должна делиться на N без остатка
     BaseLen is Len // N,        % Вычисляем длину повторяющегося кусочка
     length(Base, BaseLen),      % Создаем список Base нужной длины
-    append(Base, _, List),
     repeat_list(Base, N, List). % Проверяем, что повторение Base N раз дает исходный List
 
     /*тестовые примеры:

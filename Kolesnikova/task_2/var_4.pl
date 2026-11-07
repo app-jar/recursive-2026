@@ -30,3 +30,15 @@ postorder(node(Value, Left, Right), Result) :-
 Вывод: Result = [5].
 Это верно!
 */
+
+/*
+Пример со сложным деревом: ?- postorder(node(10, node(5, node(2, nil, nil), nil), node(15, nil, node(20, nil, nil))), Result).
+Вывод: Result = [2, 5, 20, 15, 10].
+Это верно!
+*/
+
+/*
+Пример с пустым деревом: ?- postorder(nil, Result).
+Вывод: Result = [].
+Это верно!
+*/

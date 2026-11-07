@@ -24,3 +24,9 @@ postorder(node(Value, Left, Right), Result) :-
 Вывод: Result = [2, 3, 1].
 Вывод верный
 */
+
+/*
+Пример с деревом из одного корня: ?- postorder(node(5, nil, nil), Result).
+Вывод: Result = [5].
+Это верно!
+*/

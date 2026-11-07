@@ -18,3 +18,9 @@ postorder(node(Value, Left, Right), Result) :-
     % Соединяем левый обход, правый обход и добавляем в конец значение корня
     append(LeftResult, RightResult, TempResult),
     append(TempResult, [Value], Result).
+
+/*
+Пример из задачи: postorder(node(1, node(2, nil, nil), node(3, nil, nil)), Result).
+Вывод: Result = [2, 3, 1].
+Вывод верный
+*/

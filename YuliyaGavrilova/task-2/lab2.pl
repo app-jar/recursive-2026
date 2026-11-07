@@ -30,3 +30,10 @@ validate([H | T], Count) :-
     H \= '(',
     H \= ')',
     validate(T, Count).
+
+% Тесты:
+% ?- check_brackets("(a+b)*(c-d)").
+% ?- check_brackets("(a+b))").
+% ?- check_brackets("a + (b * (c - d)").
+% ?- check_brackets("((a))").
+% ?- check_brackets(")a+b(").

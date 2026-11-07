@@ -12,6 +12,6 @@ exactly_two(List, Result) :-
     unique_elements(List, Uniques),
     findall(X, (member(X, Uniques), count_occurrences(X, List, 2)), Result).
 
-test_empty :- exactly_two([], []).
-test_no_duplicates :- exactly_two([1, 2, 3], []), write('Успех'), nl.
-% test_duplicates :- exactly_two([1, 2, 1, 2], [1]).
+test_empty :- exactly_two([], Result), Result == [].
+test_no_duplicates :- exactly_two([1, 2, 3], Result), Result == [], format('Успех~n').
+% test_duplicates :- exactly_two([1, 2, 1, 2], [1, 2]).

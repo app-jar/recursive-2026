@@ -28,4 +28,12 @@ count_rook_arrangements(N, Count) :-
     /*тесты
     count_rook_arrangements(4, Count).
     Count = 24.
+    count_rook_arrangements(1, Count).
+    Count = 1.
+    count_rook_arrangements(0, Count).
+    false.
+    count_rook_arrangements(-3, Count).
+    false.
+    count_rook_arrangements(5, Count).
+    Count = 120.
     */

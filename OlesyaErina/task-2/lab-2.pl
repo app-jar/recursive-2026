@@ -5,3 +5,27 @@
 %Вход: Целое положительное число N — размер квадратной доски.
 %Пример: N = 3.
 %Результат: 6.
+
+% Вспомогательный предикат: удаляет элемент X из списка
+del(X, [X|T], T).
+del(X, [H|T], [H|R]) :- 
+    del(X, T, R).
+
+% Вспомогательный предикат: генерирует все перестановки списка
+% Каждый элемент списка — это номер столбца для i-й строки
+perm([], []).
+perm(List, [H|T]) :-
+    del(H, List, Rest),
+    perm(Rest, T).
+
+% Основной предикат подсчета
+count_rook_arrangements(N, Count) :-
+    N > 0,                                  % Проверка на положительное N
+    numlist(1, N, Columns),                 
+    findall(Arrangement, perm(Columns, Arrangement), AllArrangements), % Находим все перестановки
+    length(AllArrangements, Count).         % Считаем их количество
+
+    /*тесты
+    count_rook_arrangements(4, Count).
+    Count = 24.
+    */

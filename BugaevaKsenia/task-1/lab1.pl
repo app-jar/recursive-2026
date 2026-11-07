@@ -14,7 +14,7 @@ eval_poly([H|T], X, Acc, Result) :-
     Acc1 is Acc * X + H,
     eval_poly(T, X, Acc1, Result).
 
-is_root([], _) :- fail. /*Обработка пустого списка кэффициентов*/
+is_root([], _) :- !, fail. /*Обработка пустого списка кэффициентов с отсечением*/
 
 is_root(Coeffs, X) :- /*Проверка на корень, начальное значение для накопления 0*/
     eval_poly(Coeffs, X, 0, Value),

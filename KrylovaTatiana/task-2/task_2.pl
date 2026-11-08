@@ -18,3 +18,8 @@ matrix_row_sums([], []).
 matrix_row_sums([Row|RestRows], [RowSum|RestSums]) :-
     sum_list(Row, RowSum),
     matrix_row_sums(RestRows, RestSums).
+
+test_empty :- matrix_row_sums([], []).
+test_single_row :- matrix_row_sums([[1, 2, 3]], [6]).
+test_example :- matrix_row_sums([[1,2],[3,4]], Result), write(Result), nl.
+test_error_data :- matrix_row_sums([[5, 5], [1, 1]], [10, 1]).

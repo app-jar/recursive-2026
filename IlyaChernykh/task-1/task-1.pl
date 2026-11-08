@@ -34,5 +34,5 @@ append([H|T], L, [H|R]) :- append(T, L, R).
 % my_unique([], X).
 %      ответ: X = []
 
-% my_unique([5, 5, 5], X).
+% my_unique([5, 5, 5, 5], X).
 %      ответ: X = [5]

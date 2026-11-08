@@ -16,3 +16,9 @@ alternating([A, B | Tail]) :-
     integer(B),
     A mod 2 =\= B mod 2,
     alternating([B | Tail]).
+% Тестовые случаи
+test_correct :- alternating([2, 5, 8, 3, 10]).
+test_incorrect :- \+ alternating([2, 4, 7]).
+test_negative :- alternating([-2, 3, -4, 7]).
+test_empty :- alternating([]).
+test_single :- alternating([5]).

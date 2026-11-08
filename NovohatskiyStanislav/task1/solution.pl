@@ -3,6 +3,7 @@
 % Условие задачи: Определить наиболее часто встречающееся число в списке.
 
 % Входной предикат: most_frequent(+List, -Result)
+most_frequent([], none).
 most_frequent([H|T], Result) :-
     count(H, [H|T], Count),
     most_frequent(T, H, Count, Result).

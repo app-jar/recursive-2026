@@ -28,5 +28,11 @@ count(X, [_|T], C) :- count(X, T, C).
 :- initialization(main).
 
 main :-
+    most_frequent([], EmptyResult),
+    write('Empty list result: '), write(EmptyResult), nl,
+
     most_frequent([2, 5, 2, 3, 5, 2, 4], X),
-    write('Most frequent element is: '), write(X), nl.
+    write('Most frequent element is: '), write(X), nl,
+
+    most_frequent([1, 2, 1, 2, 3], Y),
+    write('Result for equal frequencies: '), write(Y), nl.

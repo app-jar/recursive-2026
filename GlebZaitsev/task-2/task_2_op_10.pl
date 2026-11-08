@@ -55,3 +55,10 @@ test_duplicates :-
                 node(3, node(2, nil, nil), nil)),
     findall(Level, node_level(Tree, 2, Level), Levels),
     Levels = [1, 2].
+
+% Проверка отсутствующего узла
+test_not_found :-
+    Tree = node(1,
+                node(2, nil, nil),
+                node(3, nil, nil)),
+    \+ node_level(Tree, 5, _).

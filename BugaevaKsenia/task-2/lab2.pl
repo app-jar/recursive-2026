@@ -41,14 +41,13 @@ has_simple_path([a,b,c,d], [(a,b),(b,c)], a, d, 2).
 
 3.  Нет пути из-за отсутствия ребер (должно быть false)
 
-has_simple_path([a,b,c,d], [(a,b),(b,c)], a, d, 2).
+has_simple_path([a,b,c,d], [], a, d, 2).
 
 4. Слишком короткий путь (нужно 3 ребра, а между a и d можно дойти только за 2)
 has_simple_path([a,b,c,d], [(a,b),(b,d)], a, d, 3).
 
 5. K = 0
-
-has_simple_path([a,b,c,d], [(a,b),(b,d)], a, d, 3).
+has_simple_path([a], [], a, a, 0).
 
 6.Путь существует, но он не единственный (должно быть true)
 has_simple_path([a,b,c,d], [(a,b),(b,c),(c,d),(a,d)], a, d, 3).

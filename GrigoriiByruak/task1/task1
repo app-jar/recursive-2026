@@ -1,0 +1,29 @@
+% Буряк Григорий
+% Лабораторная 1,
+% Задача 1.
+% Получить список всех делителей указанного числа.
+
+divisors(N, D) :-
+    N > 0,
+    divisors_from(N, 1, D).
+
+% Перебираем кандидатов от I до N
+divisors_from(N, I, []) :-
+    I > N, !.
+divisors_from(N, I, [I | T]) :-
+    N mod I =:= 0, !,
+    I1 is I + 1,
+    divisors_from(N, I1, T).
+divisors_from(N, I, T) :-
+    I1 is I + 1,
+    divisors_from(N, I1, T).
+
+% Тесты:
+% divisors(12, R).
+%     ответ: [1, 2, 3, 4, 6, 12]
+% divisors(1, R).
+%     ответ: [1]
+% divisors(7, R).
+%     ответ: [1, 7]
+% divisors(36, R).
+%     ответ: [1, 2, 3, 4, 6, 9, 12, 18, 36]

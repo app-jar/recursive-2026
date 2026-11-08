@@ -9,8 +9,8 @@
 % Пустой список и список из одного элемента
 % не нарушают условие чередования.
 alternating([]).
-alternating([X]) :-
-    integer(X).
+alternating([Number]) :-
+    integer(Number).
 alternating([A, B | Tail]) :-
     integer(A),
     integer(B),

@@ -23,3 +23,26 @@ node_level(node(_, Left, _), Value, Level) :-
 node_level(node(_, _, Right), Value, Level) :-
     node_level(Right, Value, PreviousLevel),
     Level is PreviousLevel + 1.
+
+% Тестовые случаи
+
+test_root :-
+    node_level(node(1, nil, nil), 1, 0).
+
+test_left :-
+    node_level(
+        node(1, node(2, nil, nil), nil),
+        2, 1
+    ).
+
+test_right :-
+    node_level(
+        node(1, nil, node(3, nil, nil)),
+        3, 1
+).
+
+test_tree :-
+    node_level(
+        node(1, node(2, nil, nil), node(3, nil, nil)),
+        3, 1
+).

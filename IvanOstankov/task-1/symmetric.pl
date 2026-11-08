@@ -39,4 +39,4 @@ main :-
     test_case([1, 2, 3, 2, 1]),      % да
     test_case([1, 2, 2, 1]),         % да
     test_case([1, 2, 3]),            % нет
-    test_case([1, 2, 3, 1]),         % нет
+    test_case([1, 2, 3, 1]).         % нет

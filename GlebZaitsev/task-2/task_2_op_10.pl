@@ -13,3 +13,13 @@
 
 % Базовый случай: искомое значение находится в корне дерева.
 node_level(node(Value, _, _), Value, 0).
+
+% Поиск узла в левом поддереве
+node_level(node(_, Left, _), Value, Level) :-
+    node_level(Left, Value, PreviousLevel),
+    Level is PreviousLevel + 1.
+
+% Поиск узла в правом поддереве
+node_level(node(_, _, Right), Value, Level) :-
+    node_level(Right, Value, PreviousLevel),
+    Level is PreviousLevel + 1.

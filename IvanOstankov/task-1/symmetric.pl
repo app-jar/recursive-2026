@@ -21,3 +21,22 @@ reverse_list([H|T], Reversed) :-
 % concat(+List1, +List2, -Result)
 concat([], L, L).
 concat([H|T], L, [H|R]) :- concat(T, L, R).
+
+% Вывод результата в формате "да" / "нет":
+% check(+List)
+check(List) :- symmetric(List), !, write('да'), nl.
+check(_) :- write('нет'), nl.
+
+% Вывод входных данных и результата:
+% test_case(+List)
+test_case(List) :-
+    write(List), write(' -> '),
+    check(List).
+
+:- initialization(main).
+
+main :-
+    test_case([1, 2, 3, 2, 1]),      % да
+    test_case([1, 2, 2, 1]),         % да
+    test_case([1, 2, 3]),            % нет
+    test_case([1, 2, 3, 1]),         % нет

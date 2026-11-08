@@ -11,3 +11,8 @@
 alternating([]).
 alternating([X]) :-
     integer(X).
+alternating([A, B | Tail]) :-
+    integer(A),
+    integer(B),
+    A mod 2 =\= B mod 2,
+    alternating([B | Tail]).

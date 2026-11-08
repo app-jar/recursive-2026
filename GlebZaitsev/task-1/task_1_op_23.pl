@@ -24,3 +24,5 @@ test_empty :- alternating([]).
 test_single :- alternating([5]).
 % Проверка списка с дробным числом
 test_float :- \+ alternating([2, 3.5, 4]).
+% Проверка списка только из четных чисел
+test_even_only :- \+ alternating([2, 4, 6, 8]).

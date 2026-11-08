@@ -13,3 +13,8 @@ sum_list([H|T], Sum) :-
     to_number(H, Num), 
     sum_list(T, TailSum), 
     Sum is Num + TailSum.
+
+matrix_row_sums([], []).
+matrix_row_sums([Row|RestRows], [RowSum|RestSums]) :-
+    sum_list(Row, RowSum),
+    matrix_row_sums(RestRows, RestSums).

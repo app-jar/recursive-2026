@@ -22,3 +22,5 @@ test_incorrect :- \+ alternating([2, 4, 7]).
 test_negative :- alternating([-2, 3, -4, 7]).
 test_empty :- alternating([]).
 test_single :- alternating([5]).
+% Проверка списка с дробным числом
+test_float :- \+ alternating([2, 3.5, 4]).

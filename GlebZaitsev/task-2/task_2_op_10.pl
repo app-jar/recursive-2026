@@ -1,4 +1,4 @@
-% ФИО: Зайцев Глеб Александрович
+% ФИО: Зайцев Глеб Андреевич
 % Лабораторная работа №2
 % Вариант 10
 % Условие: найти уровень узла с заданным
@@ -62,3 +62,16 @@ test_not_found :-
                 node(2, nil, nil),
                 node(3, nil, nil)),
     \+ node_level(Tree, 5, _).
+
+% Проверка поиска узла на четвертом уровне
+test_deep_tree :-
+    Tree = node(1,
+                node(2,
+                     node(4,
+                          node(6,
+                               node(8, nil, nil),
+                               nil),
+                          nil),
+                     nil),
+                node(3, nil, nil)),
+    node_level(Tree, 8, 4).

@@ -46,3 +46,12 @@ test_tree :-
         node(1, node(2, nil, nil), node(3, nil, nil)),
         3, 1
 ).
+
+
+% Проверка одинаковых значений на разных уровнях
+test_duplicates :-
+    Tree = node(1,
+                node(2, nil, nil),
+                node(3, node(2, nil, nil), nil)),
+    findall(Level, node_level(Tree, 2, Level), Levels),
+    Levels = [1, 2].

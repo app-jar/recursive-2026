@@ -20,3 +20,19 @@ member(X, [_|T]) :- member(X, T).
 
 append([], L, L).
 append([H|T], L, [H|R]) :- append(T, L, R).
+
+% Тесты:
+% my_unique([1, 2, 1, 3, 2, 1], X).
+%      ответ: X = [1, 2, 3]
+
+%my_unique([2, 1, 3, 2, 1], X).
+%      ответ: X = [2, 1, 3]
+
+% my_unique([1, 2, 3, 4], X).
+%      ответ: X = [1, 2, 3, 4]
+
+% my_unique([], X).
+%      ответ: X = []
+
+% my_unique([5, 5, 5], X).
+%      ответ: X = [5]

@@ -25,4 +25,19 @@ main :-
     column_sums([[1,2], [3,4]], Result),
     write('Column sums: '),
     write(Result),
+    nl,
+
+    column_sums([[2, 4, 6]], OneRow),
+    write('Single row: '),
+    write(OneRow),
+    nl,
+
+    column_sums([[5], [10], [15]], OneColumn),
+    write('Single column: '),
+    write(OneColumn),
+    nl,
+
+    column_sums([], Empty),
+    write('Empty matrix: '),
+    write(Empty),
     nl.

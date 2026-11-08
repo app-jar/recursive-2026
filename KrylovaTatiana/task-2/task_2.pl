@@ -7,3 +7,9 @@
 to_number(X, N) :- number(X), !, N = X.
 to_number(-X, N) :- !, to_number(X, N1), N is -N1.
 to_number(X, N) :- N is X.
+
+sum_list([], 0).
+sum_list([H|T], Sum) :- 
+    to_number(H, Num), 
+    sum_list(T, TailSum), 
+    Sum is Num + TailSum.

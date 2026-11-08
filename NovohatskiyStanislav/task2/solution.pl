@@ -2,14 +2,22 @@
 % Задача №17
 % Условие: Вычислить сумму элементов каждого столбца матрицы.
 
-% Входной предикат:
-% column_sums(+Matrix, -Result)
+% Проверка одинаковой длины строк матрицы
+valid_matrix([]).
+valid_matrix([Row|Rows]) :-
+    maplist(same_length(Row), Rows).
 
-column_sums([], []).
-column_sums([[]|_], []) :- !.
-column_sums(Matrix, [Sum|Rest]) :-
+% Входной предикат
+column_sums(Matrix, Result) :-
+    valid_matrix(Matrix),
+    column_sums_valid(Matrix, Result).
+
+% Вычисление сумм столбцов
+column_sums_valid([], []).
+column_sums_valid([[]|_], []) :- !.
+column_sums_valid(Matrix, [Sum|Rest]) :-
     sum_heads(Matrix, Sum, Tails),
-    column_sums(Tails, Rest).
+    column_sums_valid(Tails, Rest).
 
 % Суммирование первых элементов каждой строки
 % и получение оставшихся частей строк.
@@ -40,4 +48,9 @@ main :-
     column_sums([], Empty),
     write('Empty matrix: '),
     write(Empty),
+    nl,
+
+    (column_sums([[1, 2], [3]], _)
+    -> write('Invalid matrix accepted')
+    ;  write('Invalid matrix rejected')),
     nl.

@@ -7,11 +7,11 @@
 Фрагмент должен состоять из последовательных элементов.
 
 Примеры тестов для запуска вручную:
-max_same_len([1, 2, 2, 2, 3, 3, 4], Result).  % Result = 3
-max_same_len([1, 1, 1, 1], Result).           % Result = 4
-max_same_len([1, 2, 3, 4], Result).           % Result = 1
-max_same_len([], Result).                     % Result = 0
-max_same_len([5], Result).                    % Result = 1
+max_len([1, 2, 2, 2, 3, 3, 4], Result).  % Result = 3
+max_len([1, 1, 1, 1], Result).           % Result = 4
+max_len([1, 2, 3, 4], Result).           % Result = 1
+max_len([], Result).                     % Result = 0
+max_len([5], Result).                    % Result = 1
 */
 
 % Базовый случай: пустой список

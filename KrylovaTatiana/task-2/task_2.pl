@@ -21,5 +21,5 @@ matrix_row_sums([Row|RestRows], [RowSum|RestSums]) :-
 
 test_empty :- matrix_row_sums([], []).
 test_single_row :- matrix_row_sums([[1, 2, 3]], [6]).
-test_example :- matrix_row_sums([[1,2],[3,4]], Result), write(Result), nl.
-test_error_data :- matrix_row_sums([[5, 5], [1, 1]], [10, 1]).
+test_example :- matrix_row_sums([[1, 2], [3, 4]], Result), Result == [3, 7].
+test_error_data :- matrix_row_sums([[5, 5], [1, 1]], [10, 2]).

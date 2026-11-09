@@ -37,4 +37,13 @@ test(wrong_result, [fail]) :-
 test(single_answer, true(Answers == [[1, 4]])) :-
     findall(Result, main_diagonal([[1, 2], [3, 4]], Result), Answers).
 
+test(compound_elements, true(Result == [f(1),f(2)])) :-
+    main_diagonal([[f(1),a],[b,f(2)]], Result).
+
+test(rectangular_matrix, [fail]) :-
+    main_diagonal([[1,2,3],[4,5,6]], _).
+
+test(uneven_rows, [fail]) :-
+    main_diagonal([[1,2],[3]], _).
+
 :- end_tests(main_diagonal).

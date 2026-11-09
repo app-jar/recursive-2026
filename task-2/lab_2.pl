@@ -16,3 +16,7 @@ count_leaves(node(_, Left, Right), Count) :-
 count_leaves(Left, LCount),
 count_leaves(Right, RCount),
 Count is LCount + RCount.
+
+% Примеры запросов
+% ?- count_leaves(nil, Result). пустое дерево
+% ?- count_leaves(node(10, nil, nil), Result). один лист-корень

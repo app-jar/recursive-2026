@@ -10,3 +10,9 @@ count_leaves(nil, 0).
 
 % Базовый случай 2: узел, у которого оба потомка равны nil, является листом
 count_leaves(node(_, nil, nil), 1) :- !.
+
+% Рекурсивный случай: сумма листьев в левом и правом поддеревьях
+count_leaves(node(_, Left, Right), Count) :-
+count_leaves(Left, LCount),
+count_leaves(Right, RCount),
+Count is LCount + RCount.

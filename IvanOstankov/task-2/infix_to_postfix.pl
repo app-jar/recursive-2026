@@ -76,3 +76,30 @@ convert([Op|T], Stack, Out, Result) :-
 % Переменная: сразу в выход
 convert([V|T], Stack, Out, Result) :-
     convert(T, Stack, [V|Out], Result).
+    
+% Вывод входных данных и результата:
+% test_case(+Expr)
+test_case(Expr) :-
+    infix_to_postfix(Expr, Postfix),
+    write(Expr), write(' -> '), write(Postfix), nl.
+
+% Точка входа для онлайн-компилятора:
+:- initialization(main).
+
+main :-
+    % Основные случаи
+    test_case('a+b*c'),              % abc*+
+    test_case('a*b+c'),              % ab*c+
+    test_case('(a+b)*c'),            % ab+c*
+    test_case('a*(b+c)-d/e'),        % abc+*de/-
+
+    % Операции одного приоритета: левая ассоциативность
+    test_case('a-b-c'),              % ab-c-
+    test_case('a+b-c'),              % ab+c-
+    test_case('a/b*c'),              % ab/c*
+    test_case('a-(b-c)'),            % abc--
+
+    % Особые случаи
+    test_case('a'),                  % a
+    test_case('(a)'),                % a
+    test_case('((a+b))').            % ab+

@@ -102,4 +102,5 @@ main :-
     % Особые случаи
     test_case('a'),                  % a
     test_case('(a)'),                % a
-    test_case('((a+b))').            % ab+
+    test_case('((a+b))'),            % ab+
+    test_case('').		     % пустой результат

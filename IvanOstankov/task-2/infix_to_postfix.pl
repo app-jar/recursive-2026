@@ -39,3 +39,40 @@ pop_all([Op|Stack], Out, Result) :-
 % rev(+List, +Acc, -Reversed)
 rev([], Acc, Acc).
 rev([H|T], Acc, Reversed) :- rev(T, [H|Acc], Reversed).
+
+
+% Входной предикат: infix_to_postfix(+Expr, -Postfix)
+% Преобразует строку Expr в инфиксной записи в постфиксную.
+infix_to_postfix(Expr, Postfix) :-
+    atom_chars(Expr, Chars),
+    convert(Chars, [], [], Result),
+    atom_chars(Postfix, Result).
+
+% Обход символов слева направо:
+% convert(+Chars, +Stack, +Out, -Result)
+% Stack - стек операций, Out - выход в обратном порядке.
+
+% Конец строки: выталкиваем остаток стека и разворачиваем выход
+convert([], Stack, Out, Result) :-
+    pop_all(Stack, Out, Full),
+    rev(Full, [], Result).
+
+% Открывающая скобка: кладём в стек
+convert(['('|T], Stack, Out, Result) :- !,
+    convert(T, ['('|Stack], Out, Result).
+
+% Закрывающая скобка: выталкиваем операции до "("
+convert([')'|T], Stack, Out, Result) :- !,
+    pop_until_paren(Stack, Out, NewStack, NewOut),
+    convert(T, NewStack, NewOut, Result).
+
+% Операция: выталкиваем операции с приоритетом >= текущего, кладём текущую.
+% Знак ">=" даёт левую ассоциативность: a-b-c = (a-b)-c
+convert([Op|T], Stack, Out, Result) :-
+    op_prec(Op, Priority), !,
+    pop_ops(Stack, Priority, Out, Stack1, Out1),
+    convert(T, [Op|Stack1], Out1, Result).
+
+% Переменная: сразу в выход
+convert([V|T], Stack, Out, Result) :-
+    convert(T, Stack, [V|Out], Result).

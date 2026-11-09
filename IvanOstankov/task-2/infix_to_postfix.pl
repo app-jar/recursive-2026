@@ -19,7 +19,7 @@ op_prec('/', 2).
 % pop_ops(+Stack, +Priority, +Out, -NewStack, -NewOut)
 pop_ops([Top|Stack], Priority, Out, NewStack, NewOut) :-
     op_prec(Top, TopPriority),
-    TopPriority > Priority, !,
+    TopPriority >= Priority, !,
     pop_ops(Stack, Priority, [Top|Out], NewStack, NewOut).
 pop_ops(Stack, _, Out, Stack, Out).
 
